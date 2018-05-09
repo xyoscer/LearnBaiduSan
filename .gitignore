@@ -5,4 +5,6 @@
 # IntelliJ project files
 .idea
 *.iml
+/DataManipulation/node_modules
+/DataManipulation/package-lock.json
 

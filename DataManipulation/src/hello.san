@@ -1,0 +1,72 @@
+<template>
+    <div class="main">
+    <h1 class="hello">{{msg}}</h1>
+    <input type="text" placeholder="输入姓名" class="form-control" value="{= name =}">
+    <input type="number" placeholder="输入年龄" class="form-control" value="{= age =}">
+    <input type="text" placeholder="输入个人简介" class="form-control" value="{= des =}">
+    <button class="btn" on-click="del">移除信息</button>
+    <div><span>姓名:</span><i>{{name}}</i></div>
+    <div><span>年龄:</span><i>{{age}}</i></div>
+    <div><span>简介:</span><i>{{des}}</i></div>
+    </div>
+</template>
+<script>
+    import {DataTypes} from 'san';
+    export default {
+        initData() {
+            return {
+                msg: 'hello Webpack San'
+            }
+        },
+//        dataTypes: {
+//            name: DataTypes.string,
+//            age: DataTypes.number,
+//            des: DataTypes.string
+//        },
+        del() {
+            this.data.set("name", undefined);
+            this.data.set("age", undefined);
+            this.data.set("des", undefined);
+        },
+        filters: {
+            stringToNum: function (value) {
+              return parseInt(value);
+            }
+        }
+
+
+    }
+</script>
+<style>
+    .main {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .hello {
+        color: red;
+        text-align: center;
+    }
+    .form-control {
+        display: inline-block;
+        padding: 6px 12px;
+        border: 1px solid skyblue;
+        border-radius: 4px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .form-control:focus {
+        border: 1px solid darkturquoise;
+    }
+    .btn {
+        display: block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 6px 12px;
+        border: 1px solid #eee;
+        background-color: darkturquoise;
+        border-radius: 6px;
+        color: #fff;
+        outline: none;
+    }
+
+</style>
