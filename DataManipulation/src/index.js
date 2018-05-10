@@ -1,7 +1,7 @@
 /**
  * Created by XiYin on 09/05/2018.
  */
-import san, {DataTypes} from 'san'
+import san from 'san'
 import {router} from 'san-router'
 import Hello from './hello.san'
 

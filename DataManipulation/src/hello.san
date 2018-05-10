@@ -1,13 +1,13 @@
 <template>
     <div class="main">
     <h1 class="hello">{{msg}}</h1>
-    <input type="text" placeholder="输入姓名" class="form-control" value="{= name =}">
-    <input type="number" placeholder="输入年龄" class="form-control" value="{= age =}">
-    <input type="text" placeholder="输入个人简介" class="form-control" value="{= des =}">
+    <input type="text" placeholder="输入姓名" class="form-control" value="{= name =}" on-input="doInput('name')">
+    <input type="number" placeholder="输入年龄" class="form-control" value="{= age =}" on-input="doInput('age')">
+    <input type="text" placeholder="输入个人简介" class="form-control" value="{= des =}" on-input="doInput('des')">
     <button class="btn" on-click="del">移除信息</button>
-    <div><span>姓名:</span><i>{{name}}</i></div>
-    <div><span>年龄:</span><i>{{age}}</i></div>
-    <div><span>简介:</span><i>{{des}}</i></div>
+    <div><span>姓名:</span><i>{{personInfo.name}}</i></div>
+    <div><span>年龄:</span><i>{{personInfo.age}}</i></div>
+    <div><span>简介:</span><i>{{personInfo.des}}</i></div>
     </div>
 </template>
 <script>
@@ -15,24 +15,47 @@
     export default {
         initData() {
             return {
-                msg: 'hello Webpack San'
+                msg: 'hello Webpack San',
+                // 初始化信息数据
+                personInfo: {
+                    name: undefined,
+                    age: undefined,
+                    des: undefined
+                }
             }
         },
-//        dataTypes: {
-//            name: DataTypes.string,
-//            age: DataTypes.number,
-//            des: DataTypes.string
-//        },
+        // 数据效验
+        dataTypes: {
+            personInfo: DataTypes.shape({
+                name:DataTypes.string,
+                age: DataTypes.number,
+                des:DataTypes.string
+            })
+        },
+        // 删除信息
         del() {
             this.data.set("name", undefined);
             this.data.set("age", undefined);
             this.data.set("des", undefined);
         },
-        filters: {
-            stringToNum: function (value) {
-              return parseInt(value);
+        // 获得表单数据
+        doInput(type) {
+            if(type === "name") {
+                this.data.set("personInfo.name", this.data.get("name"));
             }
-        }
+            if(type === "age") {
+                this.data.set("personInfo.age", parseInt(this.data.get("age")));
+            }
+            if(type === "des") {
+                this.data.set("personInfo.des", this.data.get("des"));
+            }
+        },
+//        filters: {
+//            inputFormat: function (value) {
+//                console.log(typeof value);
+//              return  parseInt(value);
+//            }
+//        },
 
 
     }
