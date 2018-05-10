@@ -7,4 +7,5 @@
 *.iml
 /DataManipulation/node_modules
 /DataManipulation/package-lock.json
-
+StyleControl/node_modules
+StyleControl/package-lock.json

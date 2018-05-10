@@ -1,0 +1,40 @@
+<template>
+    <div class="main">
+        <div style="width:{{width}}; height:{{height}};background-color: {{backgroundColor}}" on-click="changeStyle"></div>
+        <div class="{{isChange? 'bigBox':'smallBox'}}" on-click="changeClass"></div>
+    </div>
+</template>
+<script>
+    export default {
+        initData() {
+           return {
+               backgroundColor: 'red',
+               width: '100px',
+               height: '100px',
+               isChange: true
+           }
+        },
+        changeStyle() {
+            this.data.set('backgroundColor', 'green');
+            this.data.set('width', '50px');
+            this.data.set('height', '50px');
+        },
+        changeClass() {
+            let isChange = this.data.get('isChange');
+            this.data.set('isChange', !isChange);
+        }
+
+    }
+</script>
+<style>
+  .bigBox {
+      background-color: darkturquoise;
+      width: 200px;
+      height: 200px;
+  }
+    .smallBox {
+        background-color: blue;
+        width: 100px;
+        height: 100px;
+    }
+</style>
