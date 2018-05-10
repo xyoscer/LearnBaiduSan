@@ -6,7 +6,7 @@
     <input type="text" placeholder="输入个人简介" class="form-control" value="{= des =}" on-input="doInput('des')">
     <button class="btn" on-click="del">移除信息</button>
     <div><span>姓名:</span><i>{{personInfo.name}}</i></div>
-    <div><span>年龄:</span><i>{{personInfo.age}}</i></div>
+    <div><span>年龄:</span><i>{{personInfo.age|inputFormat}}</i></div>
     <div><span>简介:</span><i>{{personInfo.des}}</i></div>
     </div>
 </template>
@@ -18,9 +18,9 @@
                 msg: 'hello Webpack San',
                 // 初始化信息数据
                 personInfo: {
-                    name: undefined,
-                    age: undefined,
-                    des: undefined
+                    name: "",
+                    age: NaN,
+                    des: ""
                 }
             }
         },
@@ -34,9 +34,9 @@
         },
         // 删除信息
         del() {
-            this.data.set("name", undefined);
-            this.data.set("age", undefined);
-            this.data.set("des", undefined);
+            this.data.set("name", "");
+            this.data.set("age", NaN);
+            this.data.set("des", "");
         },
         // 获得表单数据
         doInput(type) {
@@ -50,12 +50,11 @@
                 this.data.set("personInfo.des", this.data.get("des"));
             }
         },
-//        filters: {
-//            inputFormat: function (value) {
-//                console.log(typeof value);
-//              return  parseInt(value);
-//            }
-//        },
+        filters: {
+            inputFormat: function (value) {
+                return  isNaN(value) ? undefined : parseInt(value);
+            }
+        },
 
 
     }
