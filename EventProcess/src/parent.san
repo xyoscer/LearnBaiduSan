@@ -1,8 +1,10 @@
 
 <template>
     <div class="main">
-        <child></child>
-        <p style="color: {{color}}">我是父组件:{{message}}</p>
+        <child msg="{{msg}}"></child>
+        <p style="color: {{color}}">我是父组件:
+            <input type="text" value="{= msg =}" style="color: {{color}}" class="form-control">
+        </p>
     </div>
 </template>
 <script>
@@ -10,7 +12,7 @@
     export default {
         initData() {
             return {
-                message: "静静的等待用户输入",
+                msg: "静静的等待用户输入",
                 color: '#080080'
             }
         },
@@ -21,10 +23,13 @@
       //父组件处理子组件传来的信息，并向更高级父组件发送消息
         messages: {
             'input-Message': function(arg) {
-                this.data.set('message',arg.value);
+                this.data.set('msg',arg.value);
                 this.data.set('color','#803b00');
                 this.dispatch('input-MoreMessage',arg.value);
             }
         }
     }
 </script>
+<style>
+
+</style>

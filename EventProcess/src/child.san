@@ -1,22 +1,22 @@
 <template>
     <div class="main">
         <label for="">子组件</label>
-        <input type="text" class="form-control"placeholder="输入传递给父组件的消息"
+        <input type="text" class="form-control" placeholder="输入传递给父组件的消息"
                 value="{= msg =}">
         <button class="btn" on-click="noticeMes(msg)">通知父组件</button>
     </div>
 </template>
 <script>
   export default {
-      initData() {
-          return {
-              msg: ""
-          }
+      // 保证初始化的子组件的输入框没有父组件的默认值
+      inited() {
+          this.data.set('msg',undefined);
       },
+
       // 将消息派发出去
       noticeMes(msg) {
           this.data.set('msg',msg);
-          this.dispatch('input-Message',msg);
+          this.dispatch('input-Message',this.data.get('msg'));
       }
 
   }
