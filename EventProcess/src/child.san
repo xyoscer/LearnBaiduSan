@@ -1,0 +1,51 @@
+<template>
+    <div class="main">
+        <label for="">子组件</label>
+        <input type="text" class="form-control"placeholder="输入传递给父组件的消息"
+                value="{= msg =}">
+        <button class="btn" on-click="noticeMes(msg)">通知父组件</button>
+    </div>
+</template>
+<script>
+  export default {
+      initData() {
+          return {
+              msg: ""
+          }
+      },
+      // 将消息派发出去
+      noticeMes(msg) {
+          this.data.set('msg',msg);
+          this.dispatch('input-Message',msg);
+      }
+
+  }
+</script>
+<style>
+    .main {
+        width: 800px;
+        margin: 10px auto;
+    }
+    .form-control {
+        display: inline-block;
+        padding: 6px 12px;
+        border: 1px solid skyblue;
+        border-radius: 4px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .form-control:focus {
+        border: 1px solid darkturquoise;
+    }
+    .btn {
+        display: inline-block;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        padding: 6px 12px;
+        border: 1px solid #eee;
+        background-color: darkturquoise;
+        border-radius: 6px;
+        color: #fff;
+        outline: none;
+    }
+</style>
