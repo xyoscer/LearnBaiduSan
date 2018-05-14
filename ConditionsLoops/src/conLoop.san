@@ -28,19 +28,13 @@
         handle(e) {
             let parameter = e.target.value;
             let handleValue = parameter.split('|');
-            console.log(handleValue[1]);
-
 
             if(handleValue[0] === '删除') {
-                console.log(handleValue[0]);
-                this.data.remove('personInfo',{id:handleValue[1]});
-                console.log(handleValue[1]);
+                this.data.removeAt('personInfo',Number(handleValue[1]));
             }
             if(handleValue[0] === '审核') {
-
-                console.log(this.data.get('personInfo[index]'));
-                this.data.set('personInfo[index]["status"]','合格');
-                console.log(this.data.get('personInfo[index]["status"]'));
+                console.log(this.data.get('personInfo.'+ handleValue[1]));
+                this.data.set('personInfo.'+ handleValue[1]+ '.status','合格');
             }
 
         }
