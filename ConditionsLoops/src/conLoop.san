@@ -1,0 +1,85 @@
+<template>
+    <div class="main">
+    <button class="btn">添加数据</button>
+ <table class="table">
+     <tr>
+         <th>姓名</th><th>审核状态</th><th>操作</th>
+     </tr>
+     <tr s-for="p,index in personInfo">
+         <td>{{p.name}}</td><td>{{p.status}}</td><td><button class="btn" on-click="handle($event)" value='{{p.handle}}|{{index}}'>{{p.handle}}</button></td>
+     </tr>
+ </table>
+    </div>
+</template>
+<script>
+    export default {
+        initData() {
+            return {
+                personInfo: [
+                    {name: "张三", status:"合格",handle: "删除" },
+                    {name: "李四", status:"不合格",handle: "删除" },
+                    {name: "王五", status:"待审核",handle: "审核" },
+                    {name: "赵六", status:"待审核",handle: "审核" },
+                    {name: "孙琦", status:"待审核",handle: "审核" },
+                    {name: "阳山", status:"不合格",handle: "删除" }
+                ]
+            }
+        },
+        handle(e) {
+            let parameter = e.target.value;
+            let handleValue = parameter.split('|');
+            console.log(handleValue[1]);
+
+
+            if(handleValue[0] === '删除') {
+                console.log(handleValue[0]);
+                this.data.remove('personInfo',{id:handleValue[1]});
+                console.log(handleValue[1]);
+            }
+            if(handleValue[0] === '审核') {
+
+                console.log(this.data.get('personInfo[index]'));
+                this.data.set('personInfo[index]["status"]','合格');
+                console.log(this.data.get('personInfo[index]["status"]'));
+            }
+
+        }
+    }
+</script>
+<style>
+    .main {
+       width: 800px;
+        margin: 10px auto;
+    }
+   .btn {
+       display: block;
+       margin-top: 5px;
+       margin-bottom: 5px;
+       padding: 6px 16px;
+       border: 1px solid #eee;
+       background-color: darkturquoise;
+       border-radius: 6px;
+       color: #fff;
+       outline: none;
+       margin-left: 40%;
+   }
+    .table {
+        width:100%;
+        padding: 10px;
+        border-spacing:1px;
+
+    }
+    /*.table > th {*/
+        /*text-align: center;*/
+        /*padding-top:6px;*/
+        /*padding-bottom: 6px;*/
+        /*background-color: #20b5b8b8;*/
+    /*}*/
+    .table > th,td {
+        text-align: center;
+        padding-top:6px;
+        padding-bottom: 6px;
+        background-color: #699b50;
+        color:#fff;
+    }
+</style>
