@@ -15,3 +15,5 @@ EventProcess/node_modules
 EventProcess/package-lock.json
 ComponentImp/package-lock.json
 ComponentImp/node_modules
+InputCheckComponent/node_modules
+InputCheckComponent/package-lock.json
