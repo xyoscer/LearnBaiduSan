@@ -1,8 +1,9 @@
 <template>
     <form action="">
-        <input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">
-        <input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">
-        <input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">
+        <input type="checkbox" disabled="{= disabled =}"
+               checked="{= checked =}" on-change="change">
+        <!--<input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">-->
+        <!--<input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">-->
     </form>
 </template>
 <script>
@@ -15,6 +16,14 @@
                 falseValue: ''
             }
         },
+        change() {
+            if(this.data.get('checked' == true)) {
+                this.data.set('checked',true);
+            } else {
+                this.data.set('checked',false)
+            }
+            this.fire('change',this.data.get('checked'));
+        }
 //        attached() {
 //            this.data.set('checkArray',['11']);
 //        }

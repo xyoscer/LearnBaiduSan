@@ -22,17 +22,14 @@
 
             }
         },
-        onInput(arg) {
-            let value = this.data.get('value');
-         console.log(value);
+        onInput() {
+           this.fire('input',this.data.get('value'));
        },
-        onFocus(arg) {
-            console.log(arg);
-            return arg;
+        onFocus() {
+            this.fire('focus');
         },
         onBlur() {
-            console.log(arg);
-            return arg;
+           this.fire('blur')
         }
     }
 </script>

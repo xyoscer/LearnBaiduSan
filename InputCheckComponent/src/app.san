@@ -7,8 +7,12 @@
                 on-focus="handleFocus"
                 on-blur="handleBlur"
         />
-        <san-checkbox checked="{=checked=}">
-             是否开启
+        <span>普通的组件{{value}}</span>
+
+        <san-checkbox checked
+           on-change="change"
+        >
+
         </san-checkbox>
     </div>
 
@@ -17,20 +21,29 @@
     import sanInput from './input.san';
     import checkbox from './checkbox.san';
     export default {
-
+        initData() {
+            return {
+                value: '',
+            }
+        },
         components: {
             'san-input': sanInput,
             'san-checkbox': checkbox
         },
-        handleInput(arg) {
-            console.log(arg);
+        handleInput(value) {
+            this.data.set('value',value);
             console.log('input');
         },
+
         handleFocus() {
-            console.log("focus");
+            console.log('focus');
         },
         handleBlur() {
-            console.log("blur");
+            console.log('blur');
+        },
+        change(value) {
+            console.log('值改变了');
+
         }
 
     }
