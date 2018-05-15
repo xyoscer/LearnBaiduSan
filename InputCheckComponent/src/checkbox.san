@@ -1,0 +1,22 @@
+<template>
+    <form action="">
+        <input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">
+        <input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">
+        <input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">
+    </form>
+</template>
+<script>
+    export default {
+        initData() {
+            return {
+                checked: false,
+                disabled: false,
+                trueVale: '',
+                falseValue: ''
+            }
+        },
+//        attached() {
+//            this.data.set('checkArray',['11']);
+//        }
+    }
+</script>

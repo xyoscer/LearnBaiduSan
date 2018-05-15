@@ -1,0 +1,59 @@
+<template>
+    <form>
+        <input type="text" class="form-control" placeholder="{{= placehold =}}"
+               value="{= value =}" disabled="{{= disabled =}}"
+               readonly="{{= readonly =}}"
+               on-input="onInput"
+               on-focus="onFocus"
+               on-blur="onBlur"
+        />
+    </form>
+
+</template>
+<script>
+    export default {
+        initData() {
+            return {
+                value: '',
+                placehold: '',
+                disabled: false,
+                readonly: false,
+                isFocus: true
+
+            }
+        },
+        onInput(arg) {
+            let value = this.data.get('value');
+         console.log(value);
+       },
+        onFocus(arg) {
+            console.log(arg);
+            return arg;
+        },
+        onBlur() {
+            console.log(arg);
+            return arg;
+        }
+    }
+</script>
+<style>
+    .form-control {
+        display: inline-block;
+        padding: 6px 12px;
+        border: 1px solid skyblue;
+        border-radius: 4px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    .form-control:hover {
+        border: 1px solid darkturquoise;
+        cursor: pointer;
+    }
+    .form-control:focus {
+        border: 1px solid darkorange;
+    }
+    .notFoucs {
+        border: 1px solid #ddd;
+    }
+
+</style>

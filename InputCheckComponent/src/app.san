@@ -1,0 +1,43 @@
+<template>
+    <div id="main">
+        <san-input
+                value="{{value}}"
+                placehold="请输入文字"
+                on-input="handleInput"
+                on-focus="handleFocus"
+                on-blur="handleBlur"
+        />
+        <san-checkbox checked="{=checked=}">
+             是否开启
+        </san-checkbox>
+    </div>
+
+</template>
+<script>
+    import sanInput from './input.san';
+    import checkbox from './checkbox.san';
+    export default {
+
+        components: {
+            'san-input': sanInput,
+            'san-checkbox': checkbox
+        },
+        handleInput(arg) {
+            console.log(arg);
+            console.log('input');
+        },
+        handleFocus() {
+            console.log("focus");
+        },
+        handleBlur() {
+            console.log("blur");
+        }
+
+    }
+</script>
+<style>
+    #main {
+        width: 800px;
+        margin: 10px auto;
+    }
+</style>
