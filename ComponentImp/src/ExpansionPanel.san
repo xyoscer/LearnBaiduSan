@@ -20,7 +20,34 @@
         toggle() {
             let isHide = this.data.get('isHide');
             this.data.set('isHide', !isHide);
+        },
+        // 生命周期各个函数调用过程
+        compiled() {
+            console.log(this);
+            console.log("1----组件视图模板编译完成");
+            console.log(this.ref("panels"));
+        },
+        inited() {
+            console.log(this);
+            console.log("2----组件实例初始化完成");
+        },
+        created() {
+            console.log(this);
+            console.log("3----组件创建完成");
+        },
+        attached() {
+            console.log(this);
+            console.log("4----组件已经被附加到页面中");
+        },
+        detached() {
+            console.log(this);
+            console.log("5----组件已经被移除页面中");
+        },
+        disposed() {
+            console.log(this);
+            console.log("6----组件卸载完成");
         }
+
     }
 </script>
 <style>
