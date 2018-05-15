@@ -1,0 +1,65 @@
+<template>
+    <div class="main">
+        <div class="panel-header">
+            <span class="title">{{panelTitle}}</span>
+            <span class="icon" on-click="toggle"><></span>
+        </div>
+        <div class="{{isHide? 'hide':'show'}}">{{panelDes}}</div>
+
+    </div>
+</template>
+<script>
+    export default {
+        initData() {
+            return {
+                panelTitle: '扩展面板标题',
+                panelDes: '这是一个扩展面版的具体内容',
+                isHide: false
+            }
+        },
+        toggle() {
+            let isHide = this.data.get('isHide');
+            this.data.set('isHide', !isHide);
+        }
+    }
+</script>
+<style>
+    .main {
+        width: 800px;
+        margin: 10px auto;
+        border: 1px solid #ddd;
+
+    }
+    .panel-header {
+        width: 100%;
+        height: 50px;
+        background-color: azure;
+        color: #000;
+        display: flex;
+    }
+    .show {
+        width: 100%;
+        display: block;
+    }
+    .hide {
+        display: none;
+    }
+    .panel-header .title {
+        padding-top: 6px;
+        padding-bottom: 6px;
+        align-items: center;
+        font-size: 16px;
+        width: 95%;
+    }
+    .icon {
+        color:#ddd;
+        font-size: 20px;
+        align-items: center;
+        cursor: pointer;
+    }
+    .icon:hover {
+        color:red;
+        cursor:pointer;
+
+    }
+</style>
