@@ -1,0 +1,35 @@
+<template>
+    <div>
+        <task-menu data="{{info}}" >
+            <h3>{{mainTitle}}</h3>
+            <p>{{title}}</p>
+            <p>{{content}}</p>
+            <p>{{time}}</p>
+        </task-menu>
+    </div>
+</template>
+<script>
+    import Task from './task.san';
+    export default{
+        initData() {
+            return {
+                info: [
+                    {mTitle: '任务一',title:'插槽1',content:'xxxx',time:'2018/5/16'},
+                    {mTitle: '任务二',title:'插槽2',content:'xxxx',time:'2018/5/16'},
+                    {mTitle: '任务三',title:'插槽3',content:'xxxx',time:'2018/5/16'},
+
+                ],
+            }
+        },
+        components: {
+          'task-menu': Task
+        }
+    }
+
+</script>
+<style>
+    .menu {
+        width: 100px;
+        display: flex;
+    }
+</style>

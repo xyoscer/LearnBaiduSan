@@ -1,0 +1,20 @@
+<template>
+    <div>
+        <h1>任务栏</h1>
+        <div>
+            <slot  s-for="item in data" var-mainTitle="item.mTitle"
+                  var-title="item.title" var-content="item.content"
+                  var-time="item.time">
+            </slot>
+        </div>
+    </div>
+</template>
+<script>
+
+</script>
+<style>
+    h1 {
+        text-align: center;
+    }
+
+</style>
