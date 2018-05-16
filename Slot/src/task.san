@@ -1,12 +1,13 @@
 <template>
     <div>
         <h1>任务栏</h1>
-        <div>
+           <div class="card">
             <slot  s-for="item in data" var-mainTitle="item.mTitle"
                   var-title="item.title" var-content="item.content"
                   var-time="item.time">
             </slot>
-        </div>
+           </div>
+
     </div>
 </template>
 <script>
@@ -16,5 +17,14 @@
     h1 {
         text-align: center;
     }
+    .card {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+        background-color: beige;
+        border:1px solid darkgoldenrod;
+    }
+
 
 </style>
