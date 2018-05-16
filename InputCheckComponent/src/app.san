@@ -7,10 +7,27 @@
                 on-focus="handleFocus"
                 on-blur="handleBlur"
         />
-        <span>普通的组件{{value}}</span>
+        <span class="label">普通的样式</span>
 
-        <san-checkbox checked
+        <san-input
+                value="{{value}}"
+                placehold="请输入文字"
+                disabled
+        />
+        <span class="label">不可用状态</span>
+
+        <san-input
+                value="{{value}}"
+                placehold="请必须输入文字"
+                on-blur="handleBlur"
+        />
+        <p class="errorInfo" style="display:{{display}}">请输入内容</p>
+        <span class="label">错误状态</span>
+
+
+        <san-checkbox checked="true"
            on-change="change"
+
         >
 
         </san-checkbox>
@@ -23,7 +40,8 @@
     export default {
         initData() {
             return {
-                value: '',
+                value: undefined,
+                display:'none'
             }
         },
         components: {
@@ -38,8 +56,12 @@
         handleFocus() {
             console.log('focus');
         },
-        handleBlur() {
-            console.log('blur');
+        handleBlur(arg) {
+            if(arg) {
+                this.data.set('display','block');
+            }else {
+                this.data.set('display','none');
+            }
         },
         change(value) {
             console.log('值改变了');
@@ -53,4 +75,17 @@
         width: 800px;
         margin: 10px auto;
     }
+    .label {
+        margin-bottom: 15px;
+        margin-top: 5px;
+        margin-left: 20px;
+        font-size: 12px;
+        color: #ccc;
+        display: inline-block;
+    }
+    .errorInfo {
+        color: coral;
+        margin-left: 20px;
+    }
+
 </style>

@@ -1,9 +1,10 @@
 <template>
     <form action="">
         <input type="checkbox" disabled="{= disabled =}"
-               checked="{= checked =}" on-change="change">
-        <!--<input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">-->
-        <!--<input type="checkbox" disabled="{= disabled =}" checked="{= checked =}">-->
+               checked="{= checked =}"
+               indeteminate = "{= indeterminate =}"
+               on-change="change">
+
     </form>
 </template>
 <script>
@@ -13,7 +14,8 @@
                 checked: false,
                 disabled: false,
                 trueVale: '',
-                falseValue: ''
+                falseValue: '',
+                indeterminate: false
             }
         },
         change() {
@@ -24,8 +26,6 @@
             }
             this.fire('change',this.data.get('checked'));
         }
-//        attached() {
-//            this.data.set('checkArray',['11']);
-//        }
+
     }
 </script>
