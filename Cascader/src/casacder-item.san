@@ -1,0 +1,62 @@
+<template>
+    <div class="cascader-item">
+        <ul>
+            <li s-for="item, key in data" on-click="showChild(item)">
+                <span>{{item.label}}</span>
+                <i s-if="item.children && item.children.length >0">》</i>
+            </li>
+        </ul>
+        <casacder-item s-if="isChildren" value="{{values}}" label="{{labels}}"
+        data="{{childrenData}}"></casacder-item>
+    </div>
+</template>
+<script>
+    export default {
+        components: {
+            'casacder-item': 'self'
+        },
+        initData() {
+            return {
+                isChildren: false,
+                childrenData: [],
+                values: [],
+                labels: []
+            }
+        },
+        created() {
+            this.data.set('values', this.data.get('value'));
+            this.data.set('labels', this.data.get('label'));
+        },
+        showChild(item) {
+            console.log(item);
+            console.log(item.children);
+            console.log(item.children.length);
+            if(item.children && item.children.length >0) {
+                this.data.set('isChildren', true);
+                this.data.set('childrenData',item.children);
+
+            }
+        }
+
+    }
+</script>
+<style>
+    .cascader-item {
+        display: flex;
+    }
+    .cascader-item ul {
+        padding: 6px 12px;
+        background-color: aliceblue;
+        border: 6px solid #eee;
+    }
+    .cascader-item li {
+        list-style: none;
+        padding: 10px 6px;
+        color: #48576a;
+        cursor: pointer;
+    }
+    .cascader-item li:hover {
+        color: red;
+        cursor: pointer;
+    }
+</style>
